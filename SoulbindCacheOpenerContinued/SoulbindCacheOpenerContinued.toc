@@ -1,8 +1,11 @@
 ## Interface: 100207
 ## Title: Soulbind Cache Opener - Continued
-## Version: 7.0.0
+## Version: 7.0.1
 ## Author: Nerino1 / Tamuko
 ## Notes: Adds a movable button to easily open Soulbind Rewards, Cache Rewards and more!
-## SavedVariablesPerCharacter: SoulbindCacheOpenerContinuedDB
+## SavedVariablesPerCharacter: SoulbindCacheOpenerDB
 ## IconTexture: Interface\AddOns\SoulbindCacheOpenerContinued\icon
+
+SoulbindCacheOpenerItemDb.lua
+SoulbindCacheOpenerItemGroups.lua
 SoulbindCacheOpenerContinued.lua
