@@ -1,3 +1,5 @@
+6.5.4 - Tamuko - created new addon and added a bunch of missing items from  the comments
+
 6.5.3 - Updated for 10.1.5
 
 6.5.2 - Rollback to 6.5 by request

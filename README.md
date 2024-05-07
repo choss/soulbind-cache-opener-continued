@@ -2,6 +2,8 @@
 
 This addon is a continuation of https://www.curseforge.com/wow/addons/soulbind-cache-opener since it was not updated since 2023. All credits go to the original author known as https://www.curseforge.com/members/nerino1
 
+Please fell free to submit pull requests to: https://github.com/choss/soulbind-cache-opener-continued
+
 This addon provides an easy way to open various rewards found in Dragonflight and Shadowlands.
 You will no longer need to search through your bags for Dragon Isle Knowledge, Drake Customizations, Cache Rewards and more.
 As well as Adventurer Caches, Callings rewards or rewards from your Soulbind in Shadowlands
@@ -25,4 +27,4 @@ Currently Supported Openables.
 - Timewalking weekly cache
 - Blingtron Gifts
 
-If there are more openables that I have missed, let me know.  
+If there are more openables that I have missed, let me know. 
