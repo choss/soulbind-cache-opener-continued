@@ -201,8 +201,11 @@ local function slashHandler(msg)
 	else
 		print("|cffffa500Soulbind Cache Opener|r: Commands for |cffffa500/SoulbindCacheOpener|r :");
 	--	print("  |cffffa500 free|r - Toggle text on button for remaining inventory space.");
-		print("  |cffffa500 ignore <itemid>|r - Ignore stacks of an item");
-		print("  |cffffa500 unignore <itemid>|r - Show stacks of an item");
+		print("  |cffffa500 hide <itemid>|r - Ignore stacks of an item");
+		print("  |cffffa500 show <itemid>|r - Show stacks of an item");
+		print("  |cffffa500 hidegroup <group>|r - Ignore stacks of an item group");
+		print("  |cffffa500 showgroup <group>|r - Show stacks of an item group");
+		print("  |cffffa500      available item groups|r: rousing");
 		print("  |cffffa500 reset|r - Reset all settings!");
 	end
 end
