@@ -5,22 +5,16 @@ local _, L = ...;
 function SoulbindCacheOpener:updateButtons()
 	if debug == true then if DLAPI then DLAPI.DebugLog("Testing", "4 - updateButtons Called") end end
 	self.previous = 0;
-	local freeSpace = 0;
-	for containerIndex = 0, NUM_BAG_SLOTS do
-		freeSlots = C_Container.GetContainerNumFreeSlots(containerIndex)
-		freeSpace = freeSpace + freeSlots;
-	end
 	for i = 1, #self.items do
 		if debug == true then if DLAPI then DLAPI.DebugLog("Testing", "5 - self.items loop") end end
-		self:updateButton(self.items[i].button,self.items[i],i,freeSpace);
+		self:updateButton(self.items[i].button,self.items[i],i);
 	end
 end
 
-function SoulbindCacheOpener:updateButton(btn,currItem,num,freeSpace)
+function SoulbindCacheOpener:updateButton(btn,currItem,num)
 	local id = currItem.id;
 	local count = GetItemCount(id);
---SoulbindCacheOpenerDB.rousing
-	if (count >= currItem.minCount and not SoulbindCacheOpenerDB.ignored_items[id] ) then
+	if (count >= currItem.minCount and not SoulbindCacheOpenerDB.ignored_items[id] and not SoulbindCacheOpener.group_ignored_items[id] ) then
 		btn:ClearAllPoints();
 		if SoulbindCacheOpenerDB.alignment == "LEFT" then
 			if self.previous == 0 then
@@ -35,13 +29,6 @@ function SoulbindCacheOpener:updateButton(btn,currItem,num,freeSpace)
 				btn:SetPoint("RIGHT", self.items[self.previous].button, "LEFT", -2, 0);
 			end
 		end
-		if self.previous == 0 and SoulbindCacheOpenerDB.freeSpace then
-			btn.freeSpaceFont:SetText("Free:"..freeSpace);
-			btn.freeSpace:Show();
-		else
-			btn.freeSpaceFont:SetText("");
-			btn.freeSpace:Hide();
-		end
 		self.previous = num;
 		btn.countString:SetText(format("%d",count));
 		btn.texture:SetDesaturated(false);
@@ -49,8 +36,6 @@ function SoulbindCacheOpener:updateButton(btn,currItem,num,freeSpace)
 		btn:Show();
 	else 
 		btn.countString:SetText("");
-		btn.freeSpaceFont:SetText("");
-		btn.freeSpace:Hide();
 		btn.texture:SetDesaturated(true);
 		if debug == true then if DLAPI then DLAPI.DebugLog("Testing", "ButtonHide") end end
 		btn:Hide();
@@ -80,18 +65,6 @@ function SoulbindCacheOpener:createButton(btn,id)
 	btn.countString = btn:CreateFontString(btn:GetName().."Count", "OVERLAY", "NumberFontNormal");
 	btn.countString:SetPoint("BOTTOMRIGHT", btn, -0, 2);
 	btn.countString:SetJustifyH("RIGHT");
-	btn.freeSpace = CreateFrame("Frame", btn:GetName().."FreeSpace", btn);
-	btn.freeSpace:SetFrameStrata("BACKGROUND");
-	btn.freeSpace:SetWidth(35);
-	btn.freeSpace:SetHeight(10);
-	btn.freeSpace.t = btn.freeSpace:CreateTexture(nil, "BACKGROUND");
-	btn.freeSpace.t:SetTexture(0,0,0,.8);
-	btn.freeSpace.t:SetAllPoints(true);
-	btn.freeSpace.texture = btn.freeSpace.t;
-	btn.freeSpace:SetPoint("TOPLEFT", btn, 1.5, -1);
-	btn.freeSpaceFont = btn.freeSpace:CreateFontString(btn.freeSpace:GetName().."Font", "OVERLAY", "SystemFont_Tiny");
-	btn.freeSpaceFont:SetPoint("CENTER", btn.freeSpace, 0, 0);
-	btn.freeSpaceFont:SetJustifyH("LEFT");
 	btn.icon = btn:CreateTexture(nil,"BACKGROUND");
 	btn.icon:SetTexture(GetItemIcon(id));
 	btn.texture = btn.icon;
@@ -110,8 +83,18 @@ function SoulbindCacheOpener:createButton(btn,id)
 
 function SoulbindCacheOpener:reset()
 	if debug == true then if DLAPI then DLAPI.DebugLog("Testing", "8 - Reset Called") end end
-	SoulbindCacheOpenerDB = {["enable"] = true,["alignment"] = "LEFT",["freeSpace"] = false,["rousing"] = true, ["ignored_items"] = {}};
+	SoulbindCacheOpenerDB = { ["enable"] = true,["alignment"] = "LEFT", ["ignored_items"] = {}, ["ignored_groups"] = {} };
 	self.frame:SetPoint('CENTER', UIParent, 'CENTER', 0, 0);
+	self:OnEvent("UPDATE");
+end
+
+function SoulbindCacheOpener:resetPosition() 
+	self.frame:SetPoint('CENTER', UIParent, 'CENTER', 0, 0);
+	self:OnEvent("UPDATE");
+end
+
+function resetAll() 
+	SoulbindCacheOpenerDB = {["enable"] = true,["alignment"] = "LEFT", ["ignored_items"] = {}, ["ignored_groups"] = {} };
 	self:OnEvent("UPDATE");
 end
 
@@ -121,6 +104,26 @@ function SoulbindCacheOpener:AddButton()
 	if debug == true then if DLAPI then DLAPI.DebugLog("Testing", "3 - Frame Shown") end end
 	SoulbindCacheOpener:updateButtons();
 end
+
+function SoulbindCacheOpener:updateIgnoreItems() 
+	SoulbindCacheOpener.group_ignored_items = {};
+	for gn, bl in pairs(SoulbindCacheOpenerDB.ignored_groups) do
+		if bl then
+			SoulbindCacheOpener:updateIgnoreItemsForOneGroup(gn);
+		end
+	end
+end
+
+function SoulbindCacheOpener:updateIgnoreItemsForOneGroup(group_name) 
+	local groupIds = SoulbindCacheOpener.groups[group_name];
+	if (groupIds ~= nil) then 
+		for i, id in ipairs(groupIds) do
+			SoulbindCacheOpener.group_ignored_items[id] = true;
+		end
+	end
+end
+
+-- /sco hidegroup rousing
 
 function SoulbindCacheOpener:OnEvent(event, ...)
 	if event == "ADDON_LOADED" then
@@ -134,6 +137,7 @@ function SoulbindCacheOpener:OnEvent(event, ...)
 		if SoulbindCacheOpenerDB.ignored_items == nil then
 			SoulbindCacheOpenerDB.ignored_items = {};
 		end
+		SoulbindCacheOpener.updateIgnoreItems();
 	end
 
 	if event == "PLAYER_LOGIN" then
@@ -155,58 +159,47 @@ end
 local function slashHandler(msg)
 	msg = msg:lower() or "";
 	local _, _, cmd, args = string.find(msg, "%s?(%w+)%s?(.*)")
---	if (msg == "free") then
---		SoulbindCacheOpenerDB.freeSpace = not SoulbindCacheOpenerDB.freeSpace;
---		SoulbindCacheOpener:updateButtons();
-	--	if SoulbindCacheOpenerDB.freeSpace then
-	--		print("|cffffa500Soulbind Cache Opener|r: Displaying inventory space text on button.");
-	--	else
-	--		print("|cffffa500Soulbind Cache Opener|r: Hiding inventory space text on button.");
-	--	end
-
 	if (cmd == "hide") then
 		SoulbindCacheOpenerDB.ignored_items[tonumber(args)] = true;
+		SoulbindCacheOpener:updateIgnoreItems();
 		SoulbindCacheOpener:updateButtons();
 		print ("|cffffa500Soulbind Cache Opener|r: ignoring itemid", args);
 
 
 	elseif (cmd == "show") then
 		SoulbindCacheOpenerDB.ignored_items[tonumber(args)] = false;
+		SoulbindCacheOpener:updateIgnoreItems();
 		SoulbindCacheOpener:updateButtons();
 		print ("|cffffa500Soulbind Cache Opener|r: showing itemid", args);
 
 	elseif (cmd == "hidegroup") then
-		local groupIds = SoulbindCacheOpener.groups[args];
-		if (groupIds ~= nil) then 
-			for i, id in ipairs(groupIds) do
-				SoulbindCacheOpenerDB.ignored_items[id] = true;
-			end
-		end
+		SoulbindCacheOpenerDB.ignored_groups[args] = true;
+		SoulbindCacheOpener:updateIgnoreItems() ;
 		SoulbindCacheOpener:updateButtons();
-		print ("|cffffa500Soulbind Cache Opener|r: showing group", args);
+		print ("|cffffa500Soulbind Cache Opener|r: hiding group", args);
 
 	elseif (cmd == "showgroup") then
-		local groupIds = SoulbindCacheOpener.groups[args];
-		if (groupIds ~= nil) then 
-			for i, id in ipairs(groupIds) do
-				SoulbindCacheOpenerDB.ignored_items[id] = false;
-			end
-		end
+		SoulbindCacheOpenerDB.ignored_groups[args] = false;
+		SoulbindCacheOpener:updateIgnoreItems();
 		SoulbindCacheOpener:updateButtons();
 		print ("|cffffa500Soulbind Cache Opener|r: showing group", args);
 
 	elseif (msg == "reset") then
-		print("|cffffa500Soulbind Cache Opener|r: Resetting settings and position.");
+		print("|cffffa500Soulbind Cache Opener|r: Resetting settings.");
 		SoulbindCacheOpener:reset();
+--	elseif (msg == "resetposition") then
+--		print("|cffffa500Soulbind Cache Opener|r: Resetting position.");
+--		SoulbindCacheOpener:resetPosition();
 	else
 		print("|cffffa500Soulbind Cache Opener|r: Commands for |cffffa500/SoulbindCacheOpener|r :");
-	--	print("  |cffffa500 free|r - Toggle text on button for remaining inventory space.");
 		print("  |cffffa500 hide <itemid>|r - Ignore stacks of an item");
 		print("  |cffffa500 show <itemid>|r - Show stacks of an item");
 		print("  |cffffa500 hidegroup <group>|r - Ignore stacks of an item group");
 		print("  |cffffa500 showgroup <group>|r - Show stacks of an item group");
 		print("  |cffffa500      available item groups|r: rousing");
-		print("  |cffffa500 reset|r - Reset all settings!");
+		print("  |cffffa500 reset|r - Reset all settings");
+		--print("  |cffffa500 resetposition|r - Reset position!");
+
 	end
 end
 
