@@ -5,6 +5,7 @@
 ## Notes: Adds a movable button to easily open Soulbind Rewards, Cache Rewards and more!
 ## SavedVariablesPerCharacter: SoulbindCacheOpenerDB
 ## IconTexture: Interface\AddOns\SoulbindCacheOpenerContinued\icon
+## X-Curse-Project-ID: 1015064
 
 SoulbindCacheOpenerItemDb.lua
 SoulbindCacheOpenerItemGroups.lua
