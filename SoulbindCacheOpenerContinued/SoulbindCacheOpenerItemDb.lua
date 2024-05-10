@@ -321,6 +321,7 @@ SoulbindCacheOpener.items = {
     {["name"] = "SoulbindCacheOpener_brittle-krokul-chest",["id"] = 152922,["minCount"] = 1,["button"] = nil},
     {["name"] = "SoulbindCacheOpener_wardens-field-kit",["id"] = 157827,["minCount"] = 1,["button"] = nil},
     {["name"] = "SoulbindCacheOpener_wardens-supply-kit",["id"] = 152107,["minCount"] = 1,["button"] = nil},
+    {["name"] = "SoulbindCacheOpener_overflowing_dream_warden_trove",["id"] = 210992,["minCount"] = 1,["button"] = nil},
         
     -- 9.0 command table
     {["name"] = "SoulbindCacheOpener_bulging-collection-of-random-bits",["id"] = 183883,["minCount"] = 1,["button"] = nil},
