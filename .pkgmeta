@@ -1,0 +1,6 @@
+package-as: SoulbindCacheOpenerContinued
+ignore: 
+    - assets
+
+move-folders:
+    SoulbindCacheOpenerContinued/SoulbindCacheOpenerContinued: SoulbindCacheOpenerContinued
