@@ -88,6 +88,7 @@ SoulbindCacheOpener.items = {
     {["name"] = "SoulbindCacheOpener_budding-dreamtrove",["id"] = 211413,["minCount"] = 1,["button"] = nil},
     {["name"] = "SoulbindCacheOpener_blossoming-dreamtrove",["id"] = 211414,["minCount"] = 1,["button"] = nil},
     {["name"] = "SoulbindCacheOpener_cache-of-overblooming-treasures",["id"] = 211389,["minCount"] = 1,["button"] = nil},
+    {["name"] = "SoulbindCacheOpener_harvested-dreamseed-cache",["id"] = 211394,["minCount"] = 1,["button"] = nil},
     
     -- Test Equipment on PTR
     {["name"] = "SoulbindCacheOpener_PTR-PlayTest-Equipment",["id"] = 186520,["minCount"] = 1,["button"] = nil},
