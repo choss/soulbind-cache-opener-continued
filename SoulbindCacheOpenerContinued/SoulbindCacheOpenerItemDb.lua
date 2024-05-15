@@ -29,6 +29,11 @@ SoulbindCacheOpener.items = {
     --10.2.6 Flightstone Wings
     {["name"] = "SoulbindCacheOpener_Awakening_Ruby_Wing",["id"] = 217243,["minCount"] = 1,["button"] = nil},
     {["name"] = "SoulbindCacheOpener_Awakening_Stone_Wing",["id"] = 217242,["minCount"] = 1,["button"] = nil},
+    -- Crests
+    {["name"] = "SoulbindCacheOpener_Awakenened_Flightstone",["id"] = 212458,["minCount"] = 1,["button"] = nil},
+    {["name"] = "SoulbindCacheOpener_lively-clutch-of-wyrms-awakened-crests",["id"] = 211950,["minCount"] = 1,["button"] = nil},
+    {["name"] = "SoulbindCacheOpener_restless-satchel-of-drakes-awakened-crests",["id"] = 212384,["minCount"] = 1,["button"] = nil},
+    {["name"] = "SoulbindCacheOpener_restless-satchel-of-aspects-awakened-crests",["id"] = 212383,["minCount"] = 1,["button"] = nil},
     
     -- Azerothian Archives
     {["name"] = "SoulbindCacheOpener_meticulous-archivists-appendix",["id"] = 213429,["minCount"] = 1,["button"] = nil},
