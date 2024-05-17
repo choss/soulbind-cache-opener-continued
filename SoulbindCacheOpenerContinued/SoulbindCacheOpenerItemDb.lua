@@ -5,6 +5,10 @@ SoulbindCacheOpener.items = {
 
     -- Pandaria Remix: limited time items to delete
     {["name"] = "SoulbindCacheOpener_cache-of-infinite-treasure",["id"] = 211279,["minCount"] = 1,["button"] = nil},
+    {["name"] = "SoulbindCacheOpener_minor-bronze-cache",["id"] = 223908,["minCount"] = 1,["button"] = nil},
+    {["name"] = "SoulbindCacheOpener_lesser-bronze-cache",["id"] = 223909,["minCount"] = 1,["button"] = nil},
+    {["name"] = "SoulbindCacheOpener_bronze-cache",["id"] = 223910,["minCount"] = 1,["button"] = nil},
+    {["name"] = "SoulbindCacheOpener_greater-bronze-cache",["id"] = 223911,["minCount"] = 1,["button"] = nil},
 
     -- Weekly Draconic-Treatise (Disabled). If you would like to add these to the addon even though you can only use it once per week, remove the "--" from in front of the lines (11-21), save the file and /reload the game.
     --{["name"] = "SoulbindCacheOpener_Draconic-Treatise-on-Mining",["id"] = 194708,["minCount"] = 1,["button"] = nil},
