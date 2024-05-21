@@ -28,13 +28,13 @@ function SoulbindCacheOpener:updateButton(currItem)
 			if self.previous == 0 then
 				btn:SetPoint("LEFT", self.frame, "LEFT", 0, 0);
 			else
-				btn:SetPoint("LEFT", self.items[self.previous].button, "RIGHT", 2, 0);
+				btn:SetPoint("LEFT", self.buttons[self.previous], "RIGHT", 2, 0);
 			end
 		else
 			if self.previous == 0 then
 				btn:SetPoint("RIGHT", self.frame, "RIGHT", 0, 0);
 			else
-				btn:SetPoint("RIGHT", self.items[self.previous].button, "LEFT", -2, 0);
+				btn:SetPoint("RIGHT", self.buttons[self.previous], "LEFT", -2, 0);
 			end
 		end
 		self.previous = self.previous + 1;
