@@ -1,20 +1,28 @@
 local debug = false;
+local maxButtons = 20;
 
 local _, L = ...;
 
 function SoulbindCacheOpener:updateButtons()
 	if debug == true then if DLAPI then DLAPI.DebugLog("Testing", "4 - updateButtons Called") end end
 	self.previous = 0;
+	for i = 1, maxButtons do
+		btn = SoulbindCacheOpener.buttons[i];
+		btn:Hide();
+	end
 	for i = 1, #self.items do
 		if debug == true then if DLAPI then DLAPI.DebugLog("Testing", "5 - self.items loop") end end
-		self:updateButton(self.items[i].button,self.items[i],i);
+		self:updateButton(self.items[i]);
 	end
 end
 
-function SoulbindCacheOpener:updateButton(btn,currItem,num)
+function SoulbindCacheOpener:updateButton(currItem)
 	local id = currItem.id;
 	local count = GetItemCount(id);
-	if (count >= currItem.minCount and not SoulbindCacheOpenerDB.ignored_items[id] and not SoulbindCacheOpener.group_ignored_items[id] ) then
+	local btn = SoulbindCacheOpener.buttons[self.previous + 1];
+
+	if (count >= currItem.minCount and not SoulbindCacheOpenerDB.ignored_items[id] and not SoulbindCacheOpener.group_ignored_items[id] and self.previous < maxButtons) then
+		SoulbindCacheOpener:createButton(btn, currItem.id);
 		btn:ClearAllPoints();
 		if SoulbindCacheOpenerDB.alignment == "LEFT" then
 			if self.previous == 0 then
@@ -29,16 +37,11 @@ function SoulbindCacheOpener:updateButton(btn,currItem,num)
 				btn:SetPoint("RIGHT", self.items[self.previous].button, "LEFT", -2, 0);
 			end
 		end
-		self.previous = num;
+		self.previous = self.previous + 1;
 		btn.countString:SetText(format("%d",count));
 		btn.texture:SetDesaturated(false);
 		if debug == true then if DLAPI then DLAPI.DebugLog("Testing", "ButtonShow") end end
 		btn:Show();
-	else 
-		btn.countString:SetText("");
-		btn.texture:SetDesaturated(true);
-		if debug == true then if DLAPI then DLAPI.DebugLog("Testing", "ButtonHide") end end
-		btn:Hide();
 	end
 end
 
@@ -246,8 +249,9 @@ SoulbindCacheOpener.frame:SetScript("OnShow", function(self,event,...)
 	end		
 	
  end);
----Create button for each item
-for i = 1, #SoulbindCacheOpener.items do
-	SoulbindCacheOpener.items[i].button = CreateFrame("Button", SoulbindCacheOpener.items[i].name, SoulbindCacheOpener.frame, "SecureActionButtonTemplate");
-	SoulbindCacheOpener:createButton(SoulbindCacheOpener.items[i].button,SoulbindCacheOpener.items[i].id);
+
+---Create button row
+for i = 1, maxButtons do
+	SoulbindCacheOpener.buttons[i] = CreateFrame("Button", "scocbutton" .. i, SoulbindCacheOpener.frame, "SecureActionButtonTemplate");
+	SoulbindCacheOpener:createButton(SoulbindCacheOpener.buttons[i], 123456);
 end

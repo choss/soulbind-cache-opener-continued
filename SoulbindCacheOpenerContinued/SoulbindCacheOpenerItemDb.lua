@@ -1,6 +1,8 @@
 local _, L = ...;
 SoulbindCacheOpener = {};
 
+SoulbindCacheOpener.buttons = {};
+
 SoulbindCacheOpener.items = {
 
     -- Pandaria Remix: limited time items to delete
