@@ -15,6 +15,7 @@ SoulbindCacheOpener.items = {
     {--[[ ["name"] = "lesser-spool-of-eternal-thread",]] ["id"] = 226144,["minCount"] = 1},
     {--[[ ["name"] = "minor-spool-of-eternal-thread",]] ["id"] = 226145,["minCount"] = 1},
     {--[[ ["name"] = "spool-of-eternal-thread",]] ["id"] = 226143,["minCount"] = 1},
+    {--[[ ["name"] = "greater-spool-of-eternal-thread",]] ["id"] = 226142,["minCount"] = 1},
 
     -- Weekly Draconic-Treatise (Disabled). If you would like to add these to the addon even though you can only use it once per week, remove the "--" from in front of the lines (11-21), save the file and /reload the game.
     --{--[[ ["name"] = "SoulbindCacheOpener_Draconic-Treatise-on-Mining",]] ["id"] = 194708,["minCount"] = 1},
