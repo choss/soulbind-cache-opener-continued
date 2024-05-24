@@ -1,22 +1,21 @@
 local _, L = ...;
 function SoulbindCacheOpener:initializeOptions() 
     local panel = CreateFrame("Frame");
-    panel.name = "Soulbind Cache Opener - Continued";            -- see panel fields
+    panel.name = L["addon_name"];
     InterfaceOptions_AddCategory(panel);  -- see InterfaceOptions API
 
-    -- add widgets to the panel as desired
-    local title = panel:CreateFontString("ARTWORK", nil, "GameFontNormalLarge");
+    local title = panel:CreateFontString("ARTWORK", nil, "GameFontNormalHuge");
     title:SetPoint("TOP");
-    title:SetText("Soulbind Cache Opener - Continued");
+    title:SetText(L["addon_name"]);
+    title:SetTextColor(0.118,0.741,0.447);
 
-    local headhiden = panel:CreateFontString("ARTWORK", nil, "GameFontNormal");
-    headhiden:SetText("Hidden item groups");
-    headhiden:SetPoint("TOPLEFT", 20, -30 );
+    local headhidden = panel:CreateFontString("ARTWORK", nil, "GameFontNormalLarge");
+    headhidden:SetText(L["hidden_groups"]);
+    headhidden:SetPoint("TOPLEFT", 20, -50 );
 
-    local i = 0;
-    for name, items in pairs(SoulbindCacheOpener.groups) do
+    for i, name in ipairs(SoulbindCacheOpener.group_ids_ordered) do
         local cb = CreateFrame("CheckButton", nil, panel, "InterfaceOptionsCheckButtonTemplate");
-        cb:SetPoint("TOPLEFT", 20, -60 + (-30*i));
+        cb:SetPoint("TOPLEFT", 20, -50 + (-20*i));
         cb.Text:SetText("   " .. L[name]);
         cb.group_id = name;
         local isChecked = false;
@@ -30,6 +29,14 @@ function SoulbindCacheOpener:initializeOptions()
             SoulbindCacheOpener:updateIgnoreItems();
             SoulbindCacheOpener:updateButtons();
         end)
-        i = i +1;
     end
+
+    local text = panel:CreateFontString("ARTWORK", nil, "GameFontWhiteSmall");
+    text:SetText(L["option_description"]);
+    text:SetPoint("BOTTOMLEFT", 20, 20);
 end
+
+-- UI strings, translation ready
+L["hidden_groups"] = "Hide items"
+L["addon_name"] = "Soulbind Cache Opener - Continued"
+L["option_description"] = "Further settings can be done with the chat command /sco . For resetting the addon type /sco reset in the chat window."

@@ -198,19 +198,18 @@ local function slashHandler(msg)
 	elseif (msg == "reset") then
 		print("|cffffa500Soulbind Cache Opener|r: Resetting settings.");
 		SoulbindCacheOpener:reset();
---	elseif (msg == "resetposition") then
---		print("|cffffa500Soulbind Cache Opener|r: Resetting position.");
---		SoulbindCacheOpener:resetPosition();
 	else
+		local groups_id_list_string = ""
+		for i, name in ipairs(SoulbindCacheOpener.group_ids_ordered) do
+			groups_id_list_string = groups_id_list_string .. " " .. name;
+		end
 		print("|cffffa500Soulbind Cache Opener|r: Commands for |cffffa500/SoulbindCacheOpener|r :");
-		print("  |cffffa500 hide <itemid>|r - Ignore stacks of an item");
-		print("  |cffffa500 show <itemid>|r - Show stacks of an item");
-		print("  |cffffa500 hidegroup <group>|r - Ignore stacks of an item group");
-		print("  |cffffa500 showgroup <group>|r - Show stacks of an item group");
-		print("  |cffffa500      available item groups|r: rousing, insignia, mop-remix-gems");
+		print("  |cffffa500 hide <itemid>|r - Ignore an item");
+		print("  |cffffa500 show <itemid>|r - Show an item");
+		print("  |cffffa500 hidegroup <group>|r - Ignore multiple items");
+		print("  |cffffa500 showgroup <group>|r - Show multiple items");
+		print("  |cffffa500      available item groups|r: " .. groups_id_list_string);
 		print("  |cffffa500 reset|r - Reset all settings");
-		--print("  |cffffa500 resetposition|r - Reset position!");
-
 	end
 end
 

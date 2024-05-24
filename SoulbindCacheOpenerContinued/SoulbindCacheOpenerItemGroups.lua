@@ -6,6 +6,9 @@ SoulbindCacheOpener.groups = {
  ["mop-remix-gems"] = { 210714, 216644, 211123, 210717, 216641, 210718, 210715, 216640, 211106, 210681, 216643, 211107, 220367, 220368, 220370, 211109, 216642, 211125, 210716, 216639, 211124, 220371, 220372, 220374 }
 }
 
-L["rousing"] = "Rousing elements";
+SoulbindCacheOpener.group_ids_ordered = { "mop-remix-gems", "rousing", "insignia" }
+
+-- UI strings, translation ready
+L["rousing"] = "Rousing Elements";
 L["insignia"] = "Dragonflight Reputation Insignias";
-L["mop-remix-gems"] = "Mists of Pandaria:Remix Gems";
+L["mop-remix-gems"] = "Mists of Pandaria: Remix - Gems";
