@@ -133,8 +133,6 @@ function SoulbindCacheOpener:updateIgnoreItemsForOneGroup(group_name)
 	end
 end
 
--- /sco hidegroup rousing
-
 function SoulbindCacheOpener:OnEvent(event, ...)
 	if event == "ADDON_LOADED" then
 		if debug == true then if DLAPI then DLAPI.DebugLog("Testing", "0 - Addon Loaded") end end
@@ -148,6 +146,7 @@ function SoulbindCacheOpener:OnEvent(event, ...)
 			SoulbindCacheOpenerDB.ignored_items = {};
 		end
 		SoulbindCacheOpener.updateIgnoreItems();
+		SoulbindCacheOpener.initializeOptions();
 	end
 
 	if event == "PLAYER_LOGIN" then
@@ -183,12 +182,14 @@ local function slashHandler(msg)
 		print ("|cffffa500Soulbind Cache Opener|r: showing itemid", args);
 
 	elseif (cmd == "hidegroup") then
+		-- TODO: refactor that out, since it is also used in SoulbindCacheOpener:initializeOptions() 
 		SoulbindCacheOpenerDB.ignored_groups[args] = true;
 		SoulbindCacheOpener:updateIgnoreItems() ;
 		SoulbindCacheOpener:updateButtons();
 		print ("|cffffa500Soulbind Cache Opener|r: hiding group", args);
 
 	elseif (cmd == "showgroup") then
+		-- TODO: refactor that out, since it is also used in SoulbindCacheOpener:initializeOptions() 
 		SoulbindCacheOpenerDB.ignored_groups[args] = false;
 		SoulbindCacheOpener:updateIgnoreItems();
 		SoulbindCacheOpener:updateButtons();
