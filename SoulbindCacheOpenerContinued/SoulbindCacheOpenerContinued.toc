@@ -9,3 +9,4 @@
 SoulbindCacheOpenerItemDb.lua
 SoulbindCacheOpenerItemGroups.lua
 SoulbindCacheOpenerContinued.lua
+Options.lua

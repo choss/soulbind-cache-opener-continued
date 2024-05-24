@@ -206,7 +206,7 @@ local function slashHandler(msg)
 		print("  |cffffa500 show <itemid>|r - Show stacks of an item");
 		print("  |cffffa500 hidegroup <group>|r - Ignore stacks of an item group");
 		print("  |cffffa500 showgroup <group>|r - Show stacks of an item group");
-		print("  |cffffa500      available item groups|r: rousing, insignia");
+		print("  |cffffa500      available item groups|r: rousing, insignia, mop-remix-gems");
 		print("  |cffffa500 reset|r - Reset all settings");
 		--print("  |cffffa500 resetposition|r - Reset position!");
 
