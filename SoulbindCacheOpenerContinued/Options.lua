@@ -1,4 +1,7 @@
 local _, L = ...;
+
+SoulbindCacheOpener.option_buttons = {};
+
 function SoulbindCacheOpener:initializeOptions() 
     local panel = CreateFrame("Frame");
     panel.name = L["addon_name"];
@@ -24,17 +27,24 @@ function SoulbindCacheOpener:initializeOptions()
         end
         cb:SetChecked(isChecked);
         cb:HookScript("OnClick", function(_, btn, down)
-		-- TODO: refactor that out, since it is also used in SoulbindCacheOpener:slashHandler() 
+        -- TODO: refactor that out, since it is also used in SoulbindCacheOpener:slashHandler() 
             SoulbindCacheOpenerDB.ignored_groups[name] = cb:GetChecked();
             SoulbindCacheOpener:updateIgnoreItems();
             SoulbindCacheOpener:updateButtons();
         end)
+        SoulbindCacheOpener.option_buttons[name] = cb; 
     end
 
     local text = panel:CreateFontString("ARTWORK", nil, "GameFontWhiteSmall");
     text:SetText(L["option_description"]);
     text:SetPoint("BOTTOMLEFT", 20, 20);
 end
+
+function SoulbindCacheOpener:updateOptionCheckbox(group_id, state) 
+    if (SoulbindCacheOpener.option_buttons[group_id] ~= nil) then
+        SoulbindCacheOpener.option_buttons[group_id]:SetChecked(state);
+    end
+end 
 
 -- UI strings, translation ready
 L["hidden_groups"] = "Hide items"

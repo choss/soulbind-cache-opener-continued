@@ -186,6 +186,7 @@ local function slashHandler(msg)
 		SoulbindCacheOpenerDB.ignored_groups[args] = true;
 		SoulbindCacheOpener:updateIgnoreItems() ;
 		SoulbindCacheOpener:updateButtons();
+		SoulbindCacheOpener:updateOptionCheckbox(args, true);
 		print ("|cffffa500Soulbind Cache Opener|r: hiding group", args);
 
 	elseif (cmd == "showgroup") then
@@ -193,6 +194,7 @@ local function slashHandler(msg)
 		SoulbindCacheOpenerDB.ignored_groups[args] = false;
 		SoulbindCacheOpener:updateIgnoreItems();
 		SoulbindCacheOpener:updateButtons();
+		SoulbindCacheOpener:updateOptionCheckbox(args, false);
 		print ("|cffffa500Soulbind Cache Opener|r: showing group", args);
 
 	elseif (msg == "reset") then
