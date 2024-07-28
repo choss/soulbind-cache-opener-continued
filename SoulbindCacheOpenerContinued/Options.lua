@@ -5,7 +5,8 @@ SoulbindCacheOpener.option_buttons = {};
 function SoulbindCacheOpener:initializeOptions() 
     local panel = CreateFrame("Frame");
     panel.name = L["addon_name"];
-    InterfaceOptions_AddCategory(panel);  -- see InterfaceOptions API
+    local category = Settings.RegisterCanvasLayoutCategory(panel, L["addon_name"]);
+    Settings.RegisterAddOnCategory(category);
 
     local title = panel:CreateFontString("ARTWORK", nil, "GameFontNormalHuge");
     title:SetPoint("TOP");
