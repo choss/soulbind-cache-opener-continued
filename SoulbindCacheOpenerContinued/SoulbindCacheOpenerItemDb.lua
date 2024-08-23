@@ -344,6 +344,7 @@ SoulbindCacheOpener.items = {
     {--[[ ["name"] = "bag-of-discount-goods",]] ["id"] = 199108,["minCount"] = 1},
     {--[[ ["name"] = "cache-of-the-ley-guardian",]] ["id"] = 52676,["minCount"] = 1},
     {--[[ ["name"] = "waxy-bundle-of-dust",]] ["id"] = 224724,["minCount"] = 1},
+    {--[[ ["name"] = "waxy-bundle",]] ["id"] = 228220,["minCount"] = 1},
     {--[[ ["name"] = "waxy-bundle-of-leather",]] ["id"] = 224723,["minCount"] = 1},
     {--[[ ["name"] = "waxy-bundle-of-resonance-crystals",]] ["id"] = 224722,["minCount"] = 1},
     {--[[ ["name"] = "wax-sealed-box",]] ["id"] = 224721,["minCount"] = 1},
