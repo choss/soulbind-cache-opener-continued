@@ -6,6 +6,14 @@ SoulbindCacheOpener.buttons = {};
 SoulbindCacheOpener.items = {
 
     -- update of an assortment of missing items
+    {--[[ ["name"] = "cache-of-nerubian-treasures",]] ["id"] = 226194,["minCount"] = 1},
+    {--[[ ["name"] = "scorched-junk",]] ["id"] = 222977,["minCount"] = 1},
+    {--[[ ["name"] = "radiant-fuel-cache",]] ["id"] = 224913,["minCount"] = 1},
+    {--[[ ["name"] = "wax-sealed-pouch",]] ["id"] = 224650,["minCount"] = 1},
+    {--[[ ["name"] = "very-large-valdrakken-accord-supply-pack",]] ["id"] = 215359,["minCount"] = 1},
+    {--[[ ["name"] = "explorer's-warbound-battlegear-drop",]] ["id"] = 221503,["minCount"] = 1},
+    {--[[ ["name"] = "chest-of-gold",]] ["id"] = 226814,["minCount"] = 1},
+    {--[[ ["name"] = "radiant-fuel-cache",]] ["id"] = 224941,["minCount"] = 1},
     {--[[ ["name"] = "nal'ryssa's-spare-mining-supplies",]] ["id"] = 126947,["minCount"] = 1},
     {--[[ ["name"] = "tranquil-satchel-of-helpful-goods",]] ["id"] = 114662,["minCount"] = 1},
     {--[[ ["name"] = "alchemy-experiment",]] ["id"] = 118759,["minCount"] = 1},
