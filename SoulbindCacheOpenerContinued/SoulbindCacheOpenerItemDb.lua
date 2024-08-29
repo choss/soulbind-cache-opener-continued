@@ -6,6 +6,12 @@ SoulbindCacheOpener.buttons = {};
 SoulbindCacheOpener.items = {
 
     -- update of an assortment of missing items
+    {--[[ ["name"] = "void-touched-valorstone",]] ["id"] = 225896,["minCount"] = 1},
+    {--[[ ["name"] = "bismuth-lockbox",]] ["id"] = 220376,["minCount"] = 1},
+    {--[[ ["name"] = "winter-veil-gift",]] ["id"] = 218311,["minCount"] = 1},
+    {--[[ ["name"] = "gently-shaken-gift",]] ["id"] = 218309,["minCount"] = 1},
+    {--[[ ["name"] = "crimson-valorstone",]] ["id"] = 221269,["minCount"] = 1},
+    {--[[ ["name"] = "golden-valorstone",]] ["id"] = 226813,["minCount"] = 1},
     {--[[ ["name"] = "cache-of-nerubian-treasures",]] ["id"] = 226194,["minCount"] = 1},
     {--[[ ["name"] = "scorched-junk",]] ["id"] = 222977,["minCount"] = 1},
     {--[[ ["name"] = "radiant-fuel-cache",]] ["id"] = 224913,["minCount"] = 1},
