@@ -6,6 +6,7 @@ SoulbindCacheOpener.buttons = {};
 SoulbindCacheOpener.items = {
 
     -- update of an assortment of missing items
+    {--[[ ["name"] = "theater-troupes-trove",]] ["id"] = 226263,["minCount"] = 1},
     {--[[ ["name"] = "everyday-cache",]] ["id"] = 227792,["minCount"] = 1},
     {--[[ ["name"] = "seasoned-adventurers-cache",]] ["id"] = 228361,["minCount"] = 1},
     {--[[ ["name"] = "void-touched-valorstone",]] ["id"] = 225896,["minCount"] = 1},
