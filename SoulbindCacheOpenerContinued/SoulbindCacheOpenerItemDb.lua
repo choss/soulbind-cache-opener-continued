@@ -24,7 +24,6 @@ SoulbindCacheOpener.items = {
     {--[[ ["name"] = "bizarrely-shaped-stomach",]] ["id"] = 218738,["minCount"] = 1},
     {--[[ ["name"] = "satchel-of-surplus-dust",]] ["id"] = 228337,["minCount"] = 1},
     {--[[ ["name"] = "seasoned-adventurers-cache",]] ["id"] = 228361,["minCount"] = 1},
-    {--[[ ["name"] = "pinnacle-cache",]] ["id"] = 224784,["minCount"] = 1},
     {--[[ ["name"] = "algari-amber-prism",]] ["id"] = 213780,["minCount"] = 1},
     {--[[ ["name"] = "algari-amber-prism",]] ["id"] = 213779,["minCount"] = 1},
     {--[[ ["name"] = "algari-emerald-prism",]] ["id"] = 213784,["minCount"] = 1},
