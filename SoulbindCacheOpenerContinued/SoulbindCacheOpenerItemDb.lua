@@ -6,6 +6,14 @@ SoulbindCacheOpener.buttons = {};
 SoulbindCacheOpener.items = {
 
     -- update of an assortment of missing items
+    {--[[ ["name"] = "glimmer-of-alchemy-knowledge",]] ["id"] = 228725,["minCount"] = 1},  
+    {--[[ ["name"] = "glimmer-of-tailoring-knowledge",]] ["id"] = 228739,["minCount"] = 1},  
+    {--[[ ["name"] = "glimmer-of-engineering-knowledge",]] ["id"] = 228731,["minCount"] = 1},  
+    {--[[ ["name"] = "glimmer-of-leatherworking-knowledge",]] ["id"] = 228737,["minCount"] = 1},  
+    {--[[ ["name"] = "glimmer-of-inscription-knowledge",]] ["id"] = 228733,["minCount"] = 1},  
+    {--[[ ["name"] = "glimmer-of-enchanting-knowledge",]] ["id"] = 228729,["minCount"] = 1},  
+    {--[[ ["name"] = "glimmer-of-jewelcrafting-knowledge",]] ["id"] = 228735,["minCount"] = 1},  
+    {--[[ ["name"] = "glimmer-of-blacksmith-knowledge",]] ["id"] = 228727,["minCount"] = 1},  
     {--[[ ["name"] = "rattling-bag-o-gold",]] ["id"] = 225249,["minCount"] = 1},
     {--[[ ["name"] = "bottomless-bag-of-khaz-algar-general-goods",]] ["id"] = 224100,["minCount"] = 1},
     {--[[ ["name"] = "wax-sealed-weathered-crests",]] ["id"] = 226148,["minCount"] = 1},
