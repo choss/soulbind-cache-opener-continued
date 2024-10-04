@@ -6,7 +6,6 @@ SoulbindCacheOpener.buttons = {};
 SoulbindCacheOpener.items = {
 
     -- update of an assortment of missing items
-    {--[[ ["name"] = "rattling-bag-o-gold",]] ["id"] = 225249,["minCount"] = 1},  
     {--[[ ["name"] = "glimmer-of-alchemy-knowledge",]] ["id"] = 228725,["minCount"] = 1},  
     {--[[ ["name"] = "glimmer-of-tailoring-knowledge",]] ["id"] = 228739,["minCount"] = 1},  
     {--[[ ["name"] = "glimmer-of-engineering-knowledge",]] ["id"] = 228731,["minCount"] = 1},  
@@ -78,7 +77,6 @@ SoulbindCacheOpener.items = {
     {--[[ ["name"] = "satchel-of-engineering-surplus",]] ["id"] = 227678,["minCount"] = 1},
     {--[[ ["name"] = "satchel-of-enchanting-surplus",]] ["id"] = 227677,["minCount"] = 1},
     {--[[ ["name"] = "pinnacle-cache",]] ["id"] = 224784,["minCount"] = 1},
-    {--[[ ["name"] = "theater-troupes-trove",]] ["id"] = 226263,["minCount"] = 1},
     {--[[ ["name"] = "void-touched-valorstone",]] ["id"] = 225896,["minCount"] = 1},
     {--[[ ["name"] = "bismuth-lockbox",]] ["id"] = 220376,["minCount"] = 1},
     {--[[ ["name"] = "winter-veil-gift",]] ["id"] = 218311,["minCount"] = 1},
