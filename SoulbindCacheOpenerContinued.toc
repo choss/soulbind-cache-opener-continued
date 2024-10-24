@@ -1,4 +1,4 @@
-## Interface: 110002
+## Interface: 110005
 ## Title: Soulbind Cache Opener - Continued
 ## Version: 7.1.0
 ## Author: Tamuko
