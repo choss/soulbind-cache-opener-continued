@@ -5,6 +5,12 @@ SoulbindCacheOpener.buttons = {};
 
 SoulbindCacheOpener.items = {
 
+    -- siren isle
+    {--[[ ["name"] = "crate-of-bygone-riches",]] ["id"] = 232372,["minCount"] = 1},  
+
+    {--[[ ["name"] = "bag-of-timeworn-badges",]] ["id"] = 232598,["minCount"] = 1},  
+    {--[[ ["name"] = "bronze-celebration-cache",]] ["id"] = 232471,["minCount"] = 1},  
+    {--[[ ["name"] = "bronze-celebration-cache",]] ["id"] = 233014,["minCount"] = 1},  
     -- update of an assortment of missing items
     {--[[ ["name"] = "glimmer-of-alchemy-knowledge",]] ["id"] = 228725,["minCount"] = 1},  
     {--[[ ["name"] = "glimmer-of-tailoring-knowledge",]] ["id"] = 228739,["minCount"] = 1},  
