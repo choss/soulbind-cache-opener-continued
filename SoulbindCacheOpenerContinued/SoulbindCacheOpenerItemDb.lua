@@ -12,6 +12,16 @@ SoulbindCacheOpener.items = {
     {--[[ ["name"] = "bronze-celebration-cache",]] ["id"] = 232471,["minCount"] = 1},  
     {--[[ ["name"] = "bronze-celebration-cache",]] ["id"] = 233014,["minCount"] = 1},  
     -- update of an assortment of missing items
+
+    {--[[ ["name"] = "flicker-of-blacksmithing-knowledge",]] ["id"] = 228726,["minCount"] = 1},  
+    {--[[ ["name"] = "flicker-of-engineering-knowledge",]] ["id"] = 228730,["minCount"] = 1},  
+    {--[[ ["name"] = "flicker-of-alchemy-knowledge",]] ["id"] = 228724,["minCount"] = 1},  
+    {--[[ ["name"] = "flicker-of-tailoring-knowledge",]] ["id"] = 228738,["minCount"] = 1},  
+    {--[[ ["name"] = "flicker-of-leatherworking-knowledge",]] ["id"] = 228736,["minCount"] = 1},  
+    {--[[ ["name"] = "flicker-of-inscription-knowledge",]] ["id"] = 228732,["minCount"] = 1},  
+    {--[[ ["name"] = "flicker-of-enchanting-knowledge",]] ["id"] = 228728,["minCount"] = 1},  
+    {--[[ ["name"] = "flicker-of-jewelcrafting-knowledge",]] ["id"] = 228734,["minCount"] = 1},  
+
     {--[[ ["name"] = "glimmer-of-alchemy-knowledge",]] ["id"] = 228725,["minCount"] = 1},  
     {--[[ ["name"] = "glimmer-of-tailoring-knowledge",]] ["id"] = 228739,["minCount"] = 1},  
     {--[[ ["name"] = "glimmer-of-engineering-knowledge",]] ["id"] = 228731,["minCount"] = 1},  
