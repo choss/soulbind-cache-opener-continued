@@ -4,6 +4,18 @@ SoulbindCacheOpener = {};
 SoulbindCacheOpener.buttons = {};
 
 SoulbindCacheOpener.items = {
+    -- crests
+    { ["id"] = 231269,["minCount"] = 1},
+    { ["id"] = 236953,["minCount"] = 1},
+    { ["id"] = 221375,["minCount"] = 1},
+    { ["id"] = 231267,["minCount"] = 1},
+
+    -- random undermine items
+    { ["id"] = 233557,["minCount"] = 1},
+
+    -- delves stuff
+    { ["id"] = 220693,["minCount"] = 100},
+    { ["id"] = 220696,["minCount"] = 100},
 
     -- siren isle
     {--[[ ["name"] = "crate-of-bygone-riches",]] ["id"] = 232372,["minCount"] = 1},  
