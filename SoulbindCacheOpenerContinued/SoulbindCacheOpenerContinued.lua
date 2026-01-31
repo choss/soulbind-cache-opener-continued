@@ -11,18 +11,43 @@ function SoulbindCacheOpener:updateButtons()
 		SoulbindCacheOpener.buttons[i]:Hide();
 		SoulbindCacheOpener.buttons[i]:SetText("");
 	end
-	for i = 1, #self.items do
-		if debug == true then print("Testing", "5 - self.items loop") end
-		self:updateButton(self.items[i], SoulbindCacheOpener.buttons[self.previous + 1]);
+
+	local found_items = {};
+	-- Loop through Backpack (0), Bags (1-4), and Reagent Bag (5)
+	for bag = 0, 5 do
+		local numSlots = C_Container.GetContainerNumSlots(bag);
+		if numSlots > 0 then
+			for slot = 1, numSlots do
+				-- Stop scanning if we've filled the UI
+				if self.previous >= maxButtons then return end
+
+				local itemID = C_Container.GetContainerItemID(bag, slot);
+				if itemID then
+					local itemData = self.items[itemID];
+					
+					-- Check: Is in DB? Not ignored? Not already shown?
+					if itemData and not found_items[itemID] and 
+					   not SoulbindCacheOpenerDB.ignored_items[itemID] and 
+					   not SoulbindCacheOpener.group_ignored_items[itemID] then
+					   
+						found_items[itemID] = true;
+						self:updateButton(itemData, SoulbindCacheOpener.buttons[self.previous + 1]);
+					end
+				end
+			end
+		end
 	end
 end
 
 function SoulbindCacheOpener:updateButton(currItem, btn)
 	local id = currItem.id;
-	local count = GetItemCount(id);
+	
+	-- We already checked ignored status and max buttons in updateButtons loop
+	-- Just check count now.
+	local count = C_Item.GetItemCount(id, true, false, true, true);
 	local btn_number = self.previous + 1;
 
-	if (count >= currItem.minCount and not SoulbindCacheOpenerDB.ignored_items[id] and not SoulbindCacheOpener.group_ignored_items[id] and self.previous < maxButtons) then
+	if (count >= currItem.minCount) then
 		btn:ClearAllPoints();
 		if SoulbindCacheOpenerDB.alignment == "LEFT" then
 			if self.previous == 0 then
@@ -42,7 +67,7 @@ function SoulbindCacheOpener:updateButton(currItem, btn)
 		-- update button icon and macro
 		btn.texture:SetDesaturated(false);
 		btn:SetAttribute("macrotext", format("/use item:%d",id));
-		btn.icon:SetTexture(GetItemIcon(id));
+		btn.icon:SetTexture(C_Item.GetItemIconByID(id));
 		btn.texture = btn.icon;
 		btn.texture:SetAllPoints(btn);
 		btn.id = id;
@@ -76,7 +101,7 @@ function SoulbindCacheOpener:createButton(btn,id)
 	btn.countString:SetPoint("BOTTOMRIGHT", btn, -0, 2);
 	btn.countString:SetJustifyH("RIGHT");
 	btn.icon = btn:CreateTexture(nil,"BACKGROUND");
-	btn.icon:SetTexture(GetItemIcon(id));
+	btn.icon:SetTexture(C_Item.GetItemIconByID(id));
 	btn.texture = btn.icon;
 	btn.texture:SetAllPoints(btn);
 	btn:RegisterForClicks("LeftButtonUp", "LeftButtonDown");
@@ -84,7 +109,14 @@ function SoulbindCacheOpener:createButton(btn,id)
 	--Tooltip
 	btn:SetScript("OnEnter", function(self)
 		GameTooltip:SetOwner(self,"ANCHOR_TOP");
-		GameTooltip:SetItemByID(format("%d",btn.id));
+		if C_TooltipInfo and C_TooltipInfo.GetItemByID then
+			local tooltipInfo = C_TooltipInfo.GetItemByID(btn.id)
+			if tooltipInfo then
+				GameTooltip:ProcessInfo(tooltipInfo)
+			end
+		else
+			GameTooltip:SetItemByID(format("%d",btn.id));
+		end
 		GameTooltip:SetClampedToScreen(true);
 		GameTooltip:Show();
 	  end);
@@ -159,7 +191,17 @@ function SoulbindCacheOpener:OnEvent(event, ...)
 		return
 	end
 	if debug == true then if DLAPI then DLAPI.DebugLog("Testing", "1 - Event Called") end end
-	SoulbindCacheOpener:AddButton();
+	
+	if event == "BAG_UPDATE" then
+		-- Debounce bag updates
+		if self.updateTimer then self.updateTimer:Cancel() end
+		self.updateTimer = C_Timer.After(0.2, function() 
+			self.updateTimer = nil;
+			SoulbindCacheOpener:AddButton();
+		end)
+	else
+		SoulbindCacheOpener:AddButton();
+	end
 end
 
 ------------------------------------------------
